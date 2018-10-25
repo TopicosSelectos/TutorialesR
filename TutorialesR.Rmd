@@ -1,0 +1,91 @@
+---
+title: "Untitled"
+author: "Adrian Figueroa Rodriguez"
+date: "25 de octubre de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Corse Description
+## Conditionals and Control Flow
+### Equality
+```{r}
+3 == (2+1)
+"intermediate" != "r"
+TRUE != FALSE
+"Rchitect" != "rchitect"
+# All these expressiones are true!
+
+# Other Instructions
+TRUE == FALSE
+-6*14 != 17-101
+"useR" == "user"
+TRUE == 1
+
+```
+
+#### Greater and less than
+
+```{r}
+(1+2) > 4
+"dogs"< "Cats"
+TRUE <= FALSE
+
+# comparison of numerics
+-6*5+2 >= -10+1
+# comparison caracters
+"raining" <= "raining dogs"
+TRUE > FALSE
+```
+
+### Compare vectors
+
+```{r}
+linkedin <- c(16,9,13,5,2,17,14)
+facebook <- c(17,7,5,16,8,13,14)
+
+linkedin > 15
+linkedin <= 5
+```
+
+### compare matrices
+```{r}
+linkedin <- c(16,9,13,5,2,17,14)
+facebook <- c(17,7,5,16,8,13,14)
+
+views <- matrix(c(linkedin,facebook), nrow = 2, byrow = TRUE)
+views
+
+# when does views = 13
+
+views == 13
+views <= 14
+```
+
+## Logical Operators
+### & and |
+
+```{r}
+TRUE & TRUE
+FALSE | TRUE
+5 <= 5 & 7 <6 
+3 < 4 | 7 < 6
+
+# EXAMPLE
+linkedin <- c(16,9,13,5,2,17,14)
+last <- tail(linkedin,1)
+```
+
+
+
+
+
+
+
+
+
+
+
