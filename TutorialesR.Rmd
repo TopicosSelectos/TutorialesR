@@ -77,7 +77,172 @@ FALSE | TRUE
 # EXAMPLE
 linkedin <- c(16,9,13,5,2,17,14)
 last <- tail(linkedin,1)
+5 > last | last > 10
+15 < last & last <= 20
 ```
+### & and | (2)
+
+```{r}
+linkedin
+facebook
+views
+# linked exceeds 10 but facebook beleow 10
+linkedin > 10 & facebook <10
+
+linkedin >= 12 | facebook >= 12
+
+views > 11 & views <= 14
+```
+
+### Blend it all together
+
+```{r}
+# Read data
+#li_df <- read.table(stdin(), header = TRUE)
+
+# Writing data
+# Write CSV in R
+# write.csv(li_df, file = "data/li_df.csv")
+
+#li_df <- read.csv("data/li_df.csv")
+
+#second <- li_df$day2
+#second
+
+#extremes <- second >25 | second < 5
+#extremes
+
+#sum(extremes)
+
+#sum(li_df$days2 > 25 | li_df$day2 < 5)
+
+```
+## Conditional statements
+### The if statement
+
+```{r}
+medium = "LinkedIn"
+num_views = 15
+if(medium == "LinkedIn"){
+  print("Showing LinkedIn infromation")
+}
+
+if(num_views > 15){
+  print("You're popular!")
+}
+```
+
+### Add an else
+```{r}
+medium <- "LinkedIn"
+num_views <- 14
+
+if(medium == "LinkedIn"){
+  print("Showing LinkedIn information")
+} else{
+  print("Unkown medium")
+}
+
+if(num_views > 15){
+  print("You're popular!")
+} else{
+  print("Try to be more visible!")
+}
+```
+### Customize further: else if
+
+```{r}
+if(medium == "LinkedIn"){
+  print("Showing LinkedIn information")
+} else if(medium == "Facebook"){
+  print("Showing Facebook info")
+} else {
+  print("Unkown medium")
+}
+
+if(num_views > 15){
+  print("You're popular!")
+} else if(num_views <= 15 & num_views > 10){
+  print("Your numer of views is average ")
+} else{
+  print("Try to be more visible!")
+}
+```
+### Else if 2.0
+```{r}
+number <- 5
+
+if(number <10){
+  if(number < 5){
+    result <- "Extra small"
+  } else{
+    result <- "Small"
+  }
+} else if(number < 100){
+  result <- "medium"
+} else{
+  result <- "large"
+}
+
+print(result)
+```
+
+### Take Control!
+```{r}
+li <- 15
+fb <- 9
+
+if (li >= 15 & fb >= 15){
+  sms <- 2 * (li + fb)
+} else if(li < 10 & fb < 10){
+  sms <- 0.5 * (li + fb)
+} else{
+  sms <- li + fb
+}
+
+sms
+
+```
+
+## Loops
+### Write a while loop
+```{r}
+speed <- 64
+
+while (speed > 30){
+  print("Slow down!")
+  speed <- speed -7
+}
+
+speed
+
+```
+
+### Throw in more conditionals
+```{r}
+speed <- 64
+
+while(speed > 29){
+  print(paste("Your speed is", speed))
+  
+  if(speed > 48){
+    print("Slow down big time!")
+    speed <- speed - 11
+    
+  } else if(speed > 30){
+    print("Slow down!")
+    speed <- speed - 6
+    
+  } else if(speed == 30){
+    print("Ok, you're at a ok speed")
+    speed <- speed - 2
+  }
+}
+```
+
+### Stop the 
+
+
 
 
 
