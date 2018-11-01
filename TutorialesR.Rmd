@@ -280,7 +280,244 @@ for(p in primes){
   print(p)
 }
 
+for(i in 1:length(primes)){
+  print(primes[i])
+}
+
+
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+
+for(li in linkedin){
+  print(li)
+}
+
+# my try
+
+for(lnk in linkedin){
+  print(lnk)
+}
+
+for(i in 1:length(linkedin)){
+  print(linkedin[i])
+}
+
 ```
+
+### Loop over a list
+
+```{r}
+primes_list <- list(2,3,5,7,11,13)
+
+for(p in primes_list){
+  #My try
+  if(p/2 > 2){
+    print(p)  
+  }
+}
+
+nyc <- list(pop = 8405837, boroughs = c("Manhattan", "Bronx", "Brooklyn", "Queens", "Staten Island"), capital = FALSE)
+
+for(info in nyc){
+  print(info)
+}
+
+for(i in 1:length(nyc)){
+  print(nyc[i])
+}
+```
+
+
+
+
+### Loop over a matrix
+
+```{r}
+for(var1 in seq1){
+  for(var2 in seq2){
+    #expression()
+  }
+}
+
+d1 <- c("O",  "  ",   "X")
+d2 <- c("  ", "O",  "O" )
+d3 <- c("X",  "  ",  "X")
+
+ttt_data <- c(d1,d2,d3)
+ttt_data
+
+ttt <- matrix(ttt_data, byrow = TRUE, nrow = 3)
+ttt
+
+for (i in 1:nrow(ttt)) {
+  for (j in 1:ncol(ttt)) {
+    print(paste("On row", i, "and column", j, "the board contains", ttt[i,j]))
+  }
+}
+
+
+
+
+```
+
+### Mix it up with control flow
+
+```{r}
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+
+for(li in linkedin){
+  if(li > 10){
+    print("You're popular!")
+  } else{
+    print("Be more visible!")
+  }
+  print(li)
+}
+```
+
+### Next, you break it
+
+```{r}
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+
+for(li in linkedin){
+  if(li > 10){
+    print("You're popular!")
+  } else {
+    print("Be more visible!")
+  }
+
+if(li > 16){
+  print("This is ridiculous, I'm outta here!")
+  break
+}
+
+if(li < 5){
+  print("This is too embarrasing!")
+  next()
+}
+
+print(li)
+}
+
+```
+
+### Build a for loop from scratch
+
+```{r}
+rquote <- "r's internals are irrefutably intriguing"
+rquote
+
+chars <- strsplit(rquote, split = "")[[1]]
+chars
+
+rcount <- 0
+
+for(char in chars){
+  if(char == "r"){
+    rcount <- rcount + 1
+  }
+  if(char == "u"){
+    break
+  }
+}
+
+rcount
+```
+
+## Functions
+### Function documentation
+
+```{r}
+help(sample)
+args(sample)
+args(remove)
+help(mean)
+args(mean)
+
+```
+
+### Use a function
+
+```{r}
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+facebook <- c(17, 7, 5, 16, 8, 13, 14)
+
+avg_li <- mean(x = linkedin)
+avg_fb <- mean(facebook)
+
+avg_li
+avg_fb
+```
+
+### Use a function
+```{r}
+# mean(x, ...)
+# mean(x, trim = 0, na.rm = FALSE, ...)
+
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+facebook <- c(17, 7, 5, 16, 8, 13, 14)
+
+avg_sum <- mean(linkedin + facebook)
+
+avg_sum_trimmed <- mean(linkedin + facebook, trim = 0.2)
+
+avg_sum
+
+avg_sum_trimmed
+```
+
+### Use a function(3)
+```{r}
+# mean(x, trim = 0, na.rm = FALSE, ...)
+
+linkedin <- c(16, 9, 13, 5, NA, 17, 14)
+facebook <- c(17, NA, 5, 16, 8, 13, 14)
+
+mean(linkedin)
+
+mean(linkedin, na.rm = TRUE)
+```
+
+### Functions inside functions
+```{r}
+speed <- 31
+print(paste("Your speed is", speed))
+
+linkedin <- c(16, 9, 13, 5, NA, 17, 14)
+facebook <- c(17, NA, 5, 16, 8, 13, 14)
+
+mean(abs(linkedin - facebook), na.rm = TRUE)
+```
+
+### Write your own function
+```{r}
+my_fun <- function(arg1, arg2){
+  x <- (arg1 * arg2) + 1 
+  print(x)
+}
+
+my_fun(11,12)
+
+pow_two <- function(x){
+  x ^ 2
+}
+
+pow_two(12)
+
+sum_abs <- function(x,y){
+  abs(x) + abs(y)
+}
+
+sum_abs(-2,3)
+```
+
+
+
+
+
+
+
+
 
 
 
