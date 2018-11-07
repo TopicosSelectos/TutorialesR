@@ -332,11 +332,11 @@ for(i in 1:length(nyc)){
 ### Loop over a matrix
 
 ```{r}
-for(var1 in seq1){
-  for(var2 in seq2){
+#for(var1 in seq1){
+#  for(var2 in seq2){
     #expression()
-  }
-}
+#  }
+#}
 
 d1 <- c("O",  "  ",   "X")
 d2 <- c("  ", "O",  "O" )
@@ -353,10 +353,6 @@ for (i in 1:nrow(ttt)) {
     print(paste("On row", i, "and column", j, "the board contains", ttt[i,j]))
   }
 }
-
-
-
-
 ```
 
 ### Mix it up with control flow
@@ -511,6 +507,191 @@ sum_abs <- function(x,y){
 sum_abs(-2,3)
 ```
 
+### Write your own function (2)
+
+```{r}
+throw_die <- function() {
+  number <- sample(1:6, size = 1)
+  number
+}
+
+throw_die()
+
+hello <- function() {
+  print("Hi there!")
+  TRUE
+}
+
+hello()
+
+```
+
+
+### Write your own function (3)
+
+```{r}
+my_func <- function(arg1, arg2){
+  x <- arg1 + arg2
+  x
+}
+
+my_func(1,4)
+
+
+pow_two <- function(x, print_info = TRUE){
+  y <- x ^ 2
+  if(print_info){
+    print(paste(x, "to the power two equals", y))
+  }
+  return(y)
+}  
+
+pow_two(5)
+pow_two(5, FALSE)
+```
+
+### R you functional?
+
+```{r}
+
+linkedin <- c(16, 9, 13,  5, 2, 17, 14)
+facebook <- c(17, 7, 5, 16,  8, 13, 14)
+
+interpret <- function(num_views) {
+  if (num_views > 15){
+    print("You're popular!")
+    return(num_views)
+    
+  } else {
+    print("Try to be more visible!")
+    return(0)
+  }
+}
+
+interpret(linkedin[1])
+interpret(facebook[2])
+```
+
+### R you functional? (2)
+
+```{r}
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+facebook <- c(17, 7, 5, 16, 8, 13, 14)
+
+interpret <- function(num_views) {
+  if (num_views > 15) {
+    print("You're popular!")
+    return(num_views)
+  } else {
+    print("Try to be more visible!")
+    return(0)
+  }
+}
+
+interpret_all <- function(views, return_sum = TRUE) {
+  count <- 0
+
+  for (v in views) {
+    count <- count + interpret(v)
+  }
+
+  if (return_sum) {
+    return(count)
+  } else {
+    return(NULL)
+  }
+}
+
+interpret_all(linkedin)
+interpret_all(facebook)
+```
+### Load an R Package
+```{r}
+library("ggplot2")
+
+qplot(mtcars$wt, mtcars$hp)
+```
+## The apply family
+### Use lapply with a built-in R function
+
+```{r}
+#lapply()
+pioneers <- c("GAUSS:1777", "BAYES:1702", "PASCAL:1623", "PEARSON:1857")
+
+split_math <- strsplit(pioneers, split = ":")
+split_math
+
+split_low <- lapply(split_math, tolower)
+split_low 
+
+str(split_low)
+```
+### Use lapply with your own function
+```{r}
+pioneers <- c("GAUSS:1777", "BAYES:1702", "PASCAL:1623", "PEARSON:1857")
+
+split <- strsplit(pioneers, split = ":")
+split
+
+split_low <- lapply(split, tolower)
+split_low
+
+select_first <- function(x) {
+  x[1]
+}
+
+names <- lapply(split_low, select_first)
+names
+
+select_second <- function(x) {
+  x[2]
+}
+
+years <- lapply(split_low, select_second)
+years
+```
+### lapply and anonymous functions
+```{r}
+triple <- function(x) { 3 * x }
+
+function(x) { 3 * x }
+
+lapply(list(1,2,3), function(x) { 3 * x })
+
+pioneers <- c("GAUSS:1777", "BAYES:1702", "PASCAL:1623", "PEARSON:1857")
+
+split <- strsplit(pioneers, split = ":")
+split_low <- lapply(split, tolower)
+
+names <- lapply(split_low, function(x) { x[1] })
+names
+
+years <- lapply(split_low, function(x) { x[2] })
+years
+```
+
+### Use lapply with additional arguments
+```{r}
+multiply <- function(x, factor) {
+  x * factor
+}
+lapply(list(1,2,3), multiply, factor = 3)
+
+pioneers <- c("GAUSS:1777", "BAYES:1702", "PASCAL:1623", "PEARSON:1857")
+
+split <- strsplit(pioneers, split = ":")
+split_low <- lapply(split, tolower)
+
+select_el <- function(x, index) {
+  x[index]
+}
+
+names <- lapply(split_low, select_el, index = 1)
+names
+
+years <- lapply(split_low, select_el, index = 2)
+years
+```
 
 
 
@@ -531,3 +712,9 @@ sum_abs(-2,3)
 
 
 
+
+
+
+
+
+ 
